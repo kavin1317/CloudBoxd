@@ -180,6 +180,20 @@ export_sc_summary
 
 ---
 
+## Live Demo
+
+| | |
+|---|---|
+| | |
+|---|---|
+| **Dashboard** | [https://cloudboxd.onrender.com/static/cloudboxd_dashboards.html](https://cloudboxd.onrender.com/static/cloudboxd_dashboards.html) |
+| **Swagger UI** | [https://cloudboxd.onrender.com/docs](https://cloudboxd.onrender.com/docs) |
+| **Health** | [https://cloudboxd.onrender.com/health](https://cloudboxd.onrender.com/health) |
+
+> Hosted on Render free tier — may take 30–60s to wake up on first visit.
+
+---
+
 ## Local Setup
 ```bash
 # 1. Clone and enter
