@@ -1,6 +1,6 @@
 # CloudBoxd — RFID-Tracked Meal Delivery Data Platform
 
-> **End-to-end data engineering portfolio project** — supply chain analytics for a meal delivery platform that tracks reusable hotboxes using RFID, inspired by Toyota WMS cage/tote tracking (CTT) systems.
+> **End-to-end data engineering portfolio project** — supply chain analytics for a meal delivery platform that tracks reusable hotboxes using RFID.
 
 [![dbt](https://img.shields.io/badge/dbt-1.8-orange)](https://www.getdbt.com/)
 [![Airflow](https://img.shields.io/badge/Airflow-2.9-blue)](https://airflow.apache.org/)
@@ -21,7 +21,7 @@ CloudBoxd delivers home-cooked Indian meals in **reusable, heat-retaining hotbox
 - **Maintained** on a schedule (cleaning every 5 uses, inspection every 15)
 - **Forecasted** to ensure enough boxes are available for next-day demand
 
-This creates a genuine **reverse logistics / circular supply chain** problem — the same pattern found in automotive parts containers (Toyota CTT), pallet tracking (CHEP), and bike/scooter fleets (Lime, Citi Bike).
+This creates a genuine **reverse logistics / circular supply chain** problem — the same pattern found in pallet tracking (CHEP), and bike/scooter fleets (Lime, Citi Bike).
 
 ---
 
@@ -72,9 +72,9 @@ This creates a genuine **reverse logistics / circular supply chain** problem —
 
 ---
 
-## The USP — CTT Box Sequencing
+## The USP — Box Sequencing
 
-Inspired directly by Toyota WMS cage/tote tracking at Infosys:
+Each order's items are intelligently split across available hotboxes using a hierarchical assignment system:
 ```
 Order ORD-20260115-042 (5 meal items, only MEDIUM boxes available)
 │
@@ -87,7 +87,7 @@ Order ORD-20260115-042 (5 meal items, only MEDIUM boxes available)
                               → AWAITING_PICKUP → RETURNED
 ```
 
-Each box gets a **hierarchical assignment ID** (`ORDER-SEQ-SUBSEQ`) tracking how order items are split across containers — the same pattern used to track parts splits in automotive WMS systems.
+Each box gets a **hierarchical assignment ID** (`ORDER-SEQ-SUBSEQ`) tracking how order items are split across containers — enabling full end-to-end traceability of every item through the reverse logistics lifecycle.
 
 ---
 
@@ -215,7 +215,7 @@ docker compose up -d
 ## Project Structure
 ```
 cloudboxd/
-├── data_generator/          # Synthetic data generator (17 tables, CTT logic)
+├── data_generator/          # Synthetic data generator (17 tables, box sequencing logic)
 ├── data/raw/                # Generated CSVs
 ├── dbt_project/
 │   ├── models/
@@ -242,7 +242,7 @@ cloudboxd/
 
 | Supply Chain Concept | CloudBoxd Implementation |
 |---|---|
-| Container/Asset Tracking (CTT) | Hotbox RFID tracking, CTT assignment sequencing |
+| Container/Asset Tracking | Hotbox RFID tracking, hierarchical assignment sequencing |
 | Reverse Logistics | Pickup scheduling, return flow, overdue alerting |
 | Fleet Management | Box utilization, health scores, maintenance cycles |
 | Demand Forecasting | Daily dispatch demand + return volume prediction |
