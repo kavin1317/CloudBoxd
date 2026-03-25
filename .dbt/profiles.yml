@@ -1,0 +1,6 @@
+cloudboxd:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /Users/kavin/Documents/Cloudboxd/cloudboxd.duckdb

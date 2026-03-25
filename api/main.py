@@ -20,6 +20,7 @@ from pathlib import Path
 from datetime import date, datetime
 from typing import Optional
 import duckdb
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -373,3 +374,5 @@ def sc_dashboard():
         )
     finally:
         con.close()
+
+app.mount("/static", StaticFiles(directory=str(BASE_DIR / "dashboards")), name="static")
