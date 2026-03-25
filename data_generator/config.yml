@@ -1,0 +1,78 @@
+seed: 42
+date_range:
+  start: "2025-06-01"
+  end: "2026-01-31"
+
+volumes:
+  customers: 2000
+  menu_items: 45
+  hotboxes: 80
+  drivers: 15
+  addresses: 500
+  delivery_zones: 4
+
+distributions:
+  subscription_plans:
+    PLAN-BM: 0.35
+    PLAN-PM: 0.30
+    PLAN-CM: 0.15
+    PLAN-PPO: 0.20
+
+  hotbox_types:
+    SMALL: 0.40
+    MEDIUM: 0.40
+    LARGE: 0.20
+
+  order_volume:
+    weekday_avg: 120
+    weekend_avg: 80
+    std_dev: 15
+
+  delivery_duration:
+    ZONE-A: {mean_min: 25, std_min: 5}
+    ZONE-B: {mean_min: 35, std_min: 8}
+    ZONE-C: {mean_min: 45, std_min: 10}
+    ZONE-D: {mean_min: 55, std_min: 12}
+
+  box_returns:
+    same_day: 0.15
+    next_day: 0.65
+    within_3_days: 0.15
+    overdue: 0.04
+    lost: 0.01
+
+  box_return_condition:
+    GOOD: 0.85
+    NEEDS_CLEANING: 0.10
+    DAMAGED: 0.05
+
+  box_maintenance:
+    cleaning_every_n_assignments: 5
+    inspection_every_n_assignments: 15
+    repair_probability: 0.03
+    cleaning_duration_hours: 2
+    inspection_duration_hours: 4
+    repair_duration_hours: 24
+
+  order_hours:
+    peak_hours: [11, 12, 13, 17, 18, 19]
+    off_peak_multiplier: 0.3
+
+  ratings:
+    mean: 4.2
+    std: 0.7
+    feedback_rate: 0.40
+
+  loyalty:
+    points_per_dollar: 10
+    tier_thresholds:
+      BRONZE: 0
+      SILVER: 500
+      GOLD: 2000
+      PLATINUM: 5000
+
+  customer_churn:
+    monthly_churn_rate: 0.05
+
+  delivery_failure_rate: 0.02
+  payment_failure_rate: 0.01

@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: order_amount
+        tests: [not_null]
+
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: email
+        tests: [unique, not_null]
+
+  - name: stg_hotboxes
+    columns:
+      - name: box_id
+        tests: [unique, not_null]
+      - name: rfid_tag
+        tests: [unique, not_null]
+      - name: current_status
+        tests:
+          - accepted_values:
+              values: ['AVAILABLE','ASSIGNED','IN_TRANSIT','DELIVERED','AWAITING_PICKUP','MAINTENANCE','RETURNED','LOST','PICKED_UP','RETIRED']
+
+  - name: stg_box_assignments
+    columns:
+      - name: assignment_id
+        tests: [unique, not_null]
+
+  - name: stg_box_lifecycle_events
+    columns:
+      - name: event_id
+        tests: [unique, not_null]
+      - name: event_type
+        tests:
+          - accepted_values:
+              values: ['ASSIGNED','DISPATCHED','DELIVERED','PICKUP_SCHEDULED','PICKED_UP','INSPECTED','RETURNED_TO_FLEET','MAINTENANCE_START','MAINTENANCE_END','RETIRED','LOST']
+
+  - name: stg_deliveries
+    columns:
+      - name: delivery_id
+        tests: [unique, not_null]
+      - name: delivery_status
+        tests:
+          - accepted_values:
+              values: ['PENDING','DISPATCHED','IN_TRANSIT','DELIVERED','FAILED']
+
+  - name: stg_payments
+    columns:
+      - name: payment_id
+        tests: [unique, not_null]
+      - name: payment_status
+        tests:
+          - accepted_values:
+              values: ['SUCCESS','FAILED','REFUNDED']
+
+  - name: stg_feedback
+    columns:
+      - name: feedback_id
+        tests: [unique, not_null]
+
+  - name: stg_loyalty
+    columns:
+      - name: account_id
+        tests: [unique, not_null]
+
+  - name: stg_menu_items
+    columns:
+      - name: menu_item_id
+        tests: [unique, not_null]
+
+  - name: stg_order_items
+    columns:
+      - name: order_id
+        tests: [not_null]
+      - name: menu_item_id
+        tests: [not_null]

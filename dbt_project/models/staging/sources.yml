@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: raw
+    database: cloudboxd
+    schema: raw
+    tables:
+      - name: orders
+      - name: customers
+      - name: addresses
+      - name: customer_addresses
+      - name: menu_items
+      - name: hotboxes
+      - name: box_assignments
+      - name: box_lifecycle_events
+      - name: drivers
+      - name: deliveries
+      - name: pickup_schedules
+      - name: box_maintenance
+      - name: payments
+      - name: feedback
+      - name: loyalty_accounts
+      - name: loyalty_transactions
+      - name: subscription_plans
+      - name: order_items

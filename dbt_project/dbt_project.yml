@@ -1,0 +1,30 @@
+name: 'cloudboxd'
+version: '1.0.0'
+config-version: 2
+profile: 'cloudboxd'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  cloudboxd:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      core:
+        +materialized: table
+        +schema: analytics
+      supply_chain:
+        +materialized: table
+        +schema: analytics
+      customer:
+        +materialized: table
+        +schema: analytics

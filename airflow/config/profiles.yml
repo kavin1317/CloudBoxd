@@ -1,0 +1,7 @@
+cloudboxd:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /opt/airflow/cloudboxd.duckdb
+      schema: main
